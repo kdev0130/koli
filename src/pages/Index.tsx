@@ -5,7 +5,7 @@ import { PinContainer } from "@/components/ui/3d-pin";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { Link } from "react-router-dom";
 import { Home, Users, Map, Heart, Shield, Globe, Coins } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/lamb.png";
 
 const navItems = [
   { name: "Home", link: "/", icon: <Home className="h-4 w-4" /> },
