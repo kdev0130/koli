@@ -6,6 +6,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import { Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
@@ -39,6 +40,15 @@ export const FloatingNav = ({
     }
   });
 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/litepaper.pdf";
+    link.download = "KOLI-Litepaper.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -58,12 +68,6 @@ export const FloatingNav = ({
           className
         )}
       >
-        <Link to="/" className="flex items-center gap-2 mr-4">
-          <div className="w-8 h-8 rounded-full bg-gradient-gold flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">K</span>
-          </div>
-          <span className="text-foreground font-semibold hidden sm:block">KOLI</span>
-        </Link>
         
         {navItems.map((navItem, idx) => (
           <Link
@@ -78,8 +82,9 @@ export const FloatingNav = ({
           </Link>
         ))}
         
-        <button className="relative text-sm font-medium border border-primary/50 text-primary px-4 py-1.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300 group">
-          <span>Join Waitlist</span>
+        <button onClick={handleDownload} className="relative text-sm font-medium border border-primary/50 text-primary px-4 py-1.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300 group flex items-center gap-2">
+          <Download className="h-4 w-4" />
+          <span>Litepaper</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-primary to-transparent h-px opacity-0 group-hover:opacity-100 transition-opacity" />
         </button>
       </motion.div>

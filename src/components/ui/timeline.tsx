@@ -8,7 +8,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
-  title: string;
+  title: string | React.ReactNode;
   content: React.ReactNode;
 }
 

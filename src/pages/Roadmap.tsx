@@ -12,24 +12,27 @@ const navItems = [
 
 const roadmapData = [
   {
-    title: "Q1 2026",
+    title: (
+      <div className="text-3xl">
+        <span className="font-bold">Months 1–2:</span> <span className="text-white">Foundation & Ignition</span>
+      </div>
+    ),
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-3 text-primary">
           <Rocket className="h-6 w-6" />
-          <span className="font-semibold text-lg">Foundation Phase</span>
+          <span className="font-semibold text-lg">Building the Foundation</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          Laying the groundwork for KOLI – building the core team, establishing partnerships, 
-          and developing our smart contracts.
+          Token creation, smart contract audit, website & social launch. Phase 1 launch (~95M tokens) with airdrop to 250k+ waitlist believers.
         </p>
         <div className="space-y-3">
           {[
-            "Core team formation",
-            "Smart contract development",
-            "Website & brand launch",
-            "Community building initiatives",
-            "Whitepaper release",
+            "Token creation & smart contract audit",
+            "Website & social media launch",
+            "Phase 1 launch (~95M tokens)",
+            "Airdrop to 250k+ waitlist believers",
+            "Community building begins",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -41,24 +44,27 @@ const roadmapData = [
     ),
   },
   {
-    title: "Q2 2026",
+    title: (
+      <div className="text-3xl">
+        <span className="font-bold">Months 3–4:</span> <span className="text-white">Momentum & Early Utility</span>
+      </div>
+    ),
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-3 text-primary">
           <Coins className="h-6 w-6" />
-          <span className="font-semibold text-lg">Token Launch</span>
+          <span className="font-semibold text-lg">Building Utility</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          The official launch of $KOLI token – marking the beginning of our journey 
-          to spread love through blockchain.
+          Launch staking platform and first merchant pilots. Major community airdrops and expanded marketing to grow the movement.
         </p>
         <div className="space-y-3">
           {[
-            "Smart contract audit completion",
-            "Token presale event",
-            "DEX listing (Uniswap/PancakeSwap)",
-            "Initial CEX partnerships",
-            "Staking platform launch",
+            "Staking platform goes live",
+            "First merchant pilots (online stores)",
+            "Major community airdrop",
+            "Engagement rewards program",
+            "Marketing expansion",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -70,24 +76,27 @@ const roadmapData = [
     ),
   },
   {
-    title: "Q3 2026",
+    title: (
+      <div className="text-3xl">
+        <span className="font-bold">Months 5–6:</span> <span className="text-white">Expansion & Phase 2</span>
+      </div>
+    ),
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-3 text-primary">
           <Users2 className="h-6 w-6" />
-          <span className="font-semibold text-lg">Community Expansion</span>
+          <span className="font-semibold text-lg">Scaling the Ecosystem</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          Growing the KOLI kingdom – expanding our community, launching governance, 
-          and beginning our charitable initiatives.
+          E-commerce beta platform rollout with lower prices for $KOLI users. Phase 2 token release with burns and governance features.
         </p>
         <div className="space-y-3">
           {[
-            "DAO governance launch",
-            "First community-voted charity donation",
-            "Ambassador program",
-            "Cross-chain bridge development",
-            "Mobile app beta release",
+            "E-commerce beta platform (lower prices for $KOLI)",
+            "Phase 2 token release",
+            "Initial token burns",
+            "Governance features launch",
+            "Strategic partnerships",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -99,24 +108,27 @@ const roadmapData = [
     ),
   },
   {
-    title: "Q4 2026",
+    title: (
+      <div className="text-3xl">
+        <span className="font-bold">Months 7–8:</span> <span className="text-white">Real-World Integration</span>
+      </div>
+    ),
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-3 text-primary">
           <Heart className="h-6 w-6" />
-          <span className="font-semibold text-lg">Love in Action</span>
+          <span className="font-semibold text-lg">Taking It Everywhere</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          Putting love into action – major charitable milestones, ecosystem expansion, 
-          and global community events.
+          Physical store pilots and major token burns. Ramped staking rewards and community governance voting on ecosystem priorities.
         </p>
         <div className="space-y-3">
           {[
-            "$100K charity milestone",
-            "NFT collection launch",
-            "Partnership with major charities",
-            "KOLI merchandise store",
-            "First annual community summit",
+            "Gas stations & physical stores (pilots)",
+            "Major milestone burn (100M+)",
+            "Staking rewards ramp-up",
+            "Community ecosystem voting",
+            "Broader adoption push",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -128,24 +140,27 @@ const roadmapData = [
     ),
   },
   {
-    title: "2027+",
+    title: (
+      <div className="text-3xl">
+        <span className="font-bold">Months 9–10:</span> <span className="text-white">Scale & Global Vision</span>
+      </div>
+    ),
     content: (
       <div className="space-y-6">
         <div className="flex items-center gap-3 text-primary">
           <Globe className="h-6 w-6" />
-          <span className="font-semibold text-lg">Global Kingdom</span>
+          <span className="font-semibold text-lg">Global Movement</span>
         </div>
         <p className="text-muted-foreground leading-relaxed">
-          The future is bright – expanding KOLI to become a global movement 
-          for positive change through blockchain technology.
+          Full e-commerce & merchant network launch. Phase 3 release and major CEX listings. Stories of real impact across the globe.
         </p>
         <div className="space-y-3">
           {[
-            "Multi-chain presence",
-            "$1M charity goal achievement",
-            "KOLI Foundation establishment",
-            "Educational platform launch",
-            "Global impact partnerships",
+            "Full e-commerce & merchant network",
+            "Phase 3 release (if momentum strong)",
+            "Major CEX listings (Binance, OKX)",
+            "Impact reports & success stories",
+            "Global adoption push",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-muted-foreground">
               <CheckCircle2 className="h-4 w-4 text-accent" />
@@ -165,6 +180,18 @@ const Roadmap = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-12 overflow-hidden">
+        {/* Watermark Logo */}
+        <div className="absolute top-4 left-4 z-20 pointer-events-none">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-4xl md:text-5xl font-bold text-gradient-gold"
+          >
+            $KOLI
+          </motion.p>
+        </div>
+
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
 
@@ -176,14 +203,11 @@ const Roadmap = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium mb-6">
-              Our Journey
+              10-Month Horizon
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              The <span className="text-gradient-gold">KOLI</span> Roadmap
-            </h1>
+            <h2 className="text-3xl md:text-5xl mb-4 text-foreground font-bold">From <span className="text-gradient-gold">Vision</span> to <span className="text-gradient-gold">Reality</span></h2>
             <p className="text-muted-foreground text-lg md:text-xl">
-              From vision to reality – follow our journey as we build the Kingdom of Love International, 
-              one milestone at a time.
+              This is just the beginning. Watch as we build a thriving KOLI economy where holders benefit from everyday use and global growth.
             </p>
           </motion.div>
         </div>
@@ -204,11 +228,32 @@ const Roadmap = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Be Part of the Journey
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="text-gradient-gold">250,000 Strong</span> and Growing
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Join our community and help shape the future of KOLI. Every voice matters in our kingdom.
+            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg">
+              Over 250,000 believers are already waiting – proof that hope spreads fast. KOLI rewards this faith with airdrops, staking incentives, community governance, and focus on charitable impact.
+            </p>
+            <div className="space-y-4 max-w-2xl mx-auto mb-8 text-left">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground">Airdrops for early participants and long-term holders</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground">Staking incentives</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground">Community governance as the ecosystem matures</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                <span className="text-muted-foreground">Focus on charitable impact: Targeted distributions to underserved groups</span>
+              </div>
+            </div>
+            <p className="text-xl font-semibold mb-8 max-w-2xl mx-auto">
+              Join the movement. <span className="text-gradient-gold">Hold with purpose</span>. Watch opportunity unfold.
             </p>
             <Link
               to="/"
@@ -225,14 +270,8 @@ const Roadmap = () => {
       <footer className="py-12 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">K</span>
-              </div>
-              <span className="text-foreground font-semibold text-lg">KOLI</span>
-            </div>
             <p className="text-muted-foreground text-sm">
-              © 2026 Kingdom of Love International. All rights reserved.
+              © Kingdom of Love International. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">

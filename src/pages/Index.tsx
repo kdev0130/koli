@@ -1,10 +1,8 @@
 import { motion } from "motion/react";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { PinContainer } from "@/components/ui/3d-pin";
-import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { Link } from "react-router-dom";
-import { Home, Users, Map, Heart, Shield, Globe, Coins } from "lucide-react";
+import { Home, Users, Map, Heart, Zap, Lock } from "lucide-react";
 import heroBg from "@/assets/lamb.png";
 
 const navItems = [
@@ -13,22 +11,29 @@ const navItems = [
   { name: "Roadmap", link: "/roadmap", icon: <Map className="h-4 w-4" /> },
 ];
 
-const features = [
+const pillars = [
   {
-    title: "Community First",
-    description: "Built by the community, for the community. Every holder has a voice.",
-    icon: <Users className="h-6 w-6" />,
+    title: "Built for Utility",
+    description: "Not just a \"meme.\" We are building an ecosystem of stores, e-marketplaces, and essential services that accept $KOLI.",
+    icon: <Heart className="h-8 w-8" />,
   },
   {
-    title: "Secure & Transparent",
-    description: "Smart contracts audited and verified. Full transparency in all operations.",
-    icon: <Shield className="h-6 w-6" />,
+    title: "Hyper-Low Friction",
+    description: "Powered by Solana. Transactions cost fractions of a cent and happen in the blink of an eye.",
+    icon: <Zap className="h-8 w-8" />,
   },
   {
-    title: "Global Impact",
-    description: "Spreading love and positive change across borders through blockchain.",
-    icon: <Globe className="h-6 w-6" />,
+    title: "Community Sovereignty",
+    description: "The Kingdom belongs to the holders. With a 40% community allocation, the people own the future.",
+    icon: <Lock className="h-8 w-8" />,
   },
+];
+
+const stats = [
+  { label: "Years of Impact", value: "10" },
+  { label: "Global Believers", value: "250K+" },
+  { label: "Fixed Supply", value: "700M" },
+  { label: "Holder Protection", value: ["30% Burn", "30% Lock"] },
 ];
 
 const Index = () => {
@@ -36,173 +41,161 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <FloatingNav navItems={navItems} />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+      {/* Section 1: Hero - The Sovereign Hero */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        {/* Watermark Logo */}
+        <div className="absolute top-4 left-4 z-20 pointer-events-none">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-4xl md:text-5xl font-bold text-gradient-gold"
+          >
+            $KOLI
+          </motion.p>
+        </div>
+
         <div className="absolute inset-0 z-0">
           <img
             src={heroBg}
-            alt="KOLI Hero Background"
-            className="w-full h-full object-cover opacity-40"
+            alt="$KOLI Hero Background"
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/70 to-background" />
         </div>
 
-        {/* Animated grid background */}
-        <div className="absolute inset-0 bg-grid opacity-20" />
-
-        {/* Glow effect */}
+        <div className="absolute inset-0 bg-grid opacity-10" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]" />
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6"
-          >
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-primary text-sm font-medium">
-              🚀 Building the Future of Love
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight"
           >
-            <span className="text-gradient-gold">KOLI</span>
+            THE KINGDOM <br />
+            WHERE EVERYONE <span className="text-gradient-gold">EATS</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground/80 mb-4"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto mb-10 leading-relaxed"
           >
-            Kingdom of Love International
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10"
-          >
-            A revolutionary crypto token built on the foundation of community, 
-            compassion, and collective growth. Join us in building a kingdom where love leads.
+            A legacy of impact since 2016, now decentralized for the world. <span className="text-gradient-gold font-semibold">$KOLI</span> is the international standard for community-driven prosperity. Built on Solana for the people.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
             <HoverBorderGradient
               containerClassName="rounded-full"
               as="button"
-              className="flex items-center space-x-2 font-semibold"
+              className="flex items-center space-x-2 font-semibold text-lg px-8 py-3"
             >
-              <Coins className="h-5 w-5" />
-              <span>Join the Kingdom</span>
+              <span>JOIN THE KINGDOM</span>
             </HoverBorderGradient>
 
             <Link
               to="/roadmap"
-              className="px-8 py-3 rounded-full border border-border text-foreground hover:bg-card transition-colors font-medium"
+              className="px-8 py-3 rounded-full border-2 border-primary text-primary hover:bg-primary/10 transition-colors font-semibold text-lg"
             >
-              View Roadmap
+              VIEW THE PROTOCOL
             </Link>
           </motion.div>
 
-          {/* Stats */}
+          {/* Scroll indicator */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
-            {[
-              { label: "Community Members", value: "10K+" },
-              { label: "Total Supply", value: "1B" },
-              { label: "Launch Phase", value: "Q2 2026" },
-              { label: "Charity Goal", value: "$1M" },
-            ].map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gradient-gold">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground text-sm mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
+            >
+              <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
+            </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
-          >
-            <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 relative">
+
+      {/* Section 2: The Silent Legacy */}
+      <section className="py-24 relative bg-card/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Why <span className="text-gradient-gold">KOLI</span>?
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              WE MOVED IN <span className="text-gradient-gold">SILENCE</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              More than just a token – it's a movement. Built on values that matter.
-            </p>
+            <div className="space-y-6 text-lg md:text-xl text-foreground/90 leading-relaxed">
+              <p>
+                Our story didn’t begin behind conference tables. It started a decade ago in the fields working beside farmers and on the open water together with fishermen—laying the true foundation of how we serve.</p>
+              <p>
+                <span className="text-gradient-gold font-semibold">$KOLI</span> is not just a token; it is the global evolution of 10 years of groundwork. What was once local is now International. What was once a gift is now a sovereign protocol.
+              </p>
+            </div>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, idx) => (
-              <FollowerPointerCard
-                key={idx}
-                title={<span className="text-xs">Learn more</span>}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="glass-card p-8 h-full group hover:border-primary/50 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-gold flex items-center justify-center text-primary-foreground mb-6 group-hover:scale-110 transition-transform">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </motion.div>
-              </FollowerPointerCard>
-            ))}
+      {/* Section 3: The Philosophy - Fishing Rod */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* Left: The Problem */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex flex-col justify-center"
+            >
+              <div className="glass-card p-12 h-full">
+                <p className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
+                  "Give a man a fish, and he eats for a day."
+                </p>
+                <p className="text-foreground/80 text-lg leading-relaxed">
+                  Traditional aid provides temporary relief but often creates permanent dependence. This is the limitation that has held our communities back for generations.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right: The Solution */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex flex-col justify-center"
+            >
+              <div className="glass-card p-12 h-full bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30">
+                <p className="text-2xl md:text-3xl font-bold mb-6 text-gradient-gold">
+                  "Teach a man to fish, and he thrives for a lifetime."
+                </p>
+                <p className="text-foreground/80 text-lg leading-relaxed">
+                  We focus on Education. We empower our community—from low-income individuals to small-scale producers—to hold, use, and trust a currency that grows with them.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 3D Pin Section */}
+      {/* Section 4: The Sovereign Stats */}
       <section className="py-24 relative bg-card/30">
         <div className="container mx-auto px-4">
           <motion.div
@@ -212,48 +205,79 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              The <span className="text-gradient-gold">Vision</span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              THE <span className="text-gradient-gold">SOVEREIGN STATS</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              A decentralized ecosystem built on love, transparency, and community empowerment.
-            </p>
           </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-8">
-            <PinContainer title="Community Treasury" href="#">
-              <div className="flex flex-col p-4 tracking-tight w-[20rem] h-[16rem]">
-                <h3 className="font-bold text-lg text-foreground mb-2">
-                  Community Treasury
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  A portion of every transaction goes to the community treasury, 
-                  governed by KOLI holders.
-                </p>
-                <div className="flex-1 w-full rounded-lg bg-gradient-to-br from-primary/40 via-accent/30 to-primary/20 flex items-center justify-center">
-                  <Heart className="h-16 w-16 text-primary" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-card p-8 text-center hover:border-primary/50 transition-all duration-300 min-w-[160px] flex flex-col items-center justify-center h-full"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-gradient-gold mb-3">
+                  {Array.isArray(stat.value) ? (
+                    <div className="leading-tight space-y-1">
+                      {stat.value.map((line, i) => (
+                        <div key={i} className="whitespace-nowrap">{line}</div>
+                      ))}
+                    </div>
+                  ) : (
+                    stat.value
+                  )}
                 </div>
-              </div>
-            </PinContainer>
-
-            <PinContainer title="Charity Initiative" href="#">
-              <div className="flex flex-col p-4 tracking-tight w-[20rem] h-[16rem]">
-                <h3 className="font-bold text-lg text-foreground mb-2">
-                  Love in Action
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Regular charitable donations to causes voted on by our community.
-                </p>
-                <div className="flex-1 w-full rounded-lg bg-gradient-to-br from-accent/40 via-primary/30 to-accent/20 flex items-center justify-center">
-                  <Globe className="h-16 w-16 text-accent" />
-                </div>
-              </div>
-            </PinContainer>
+                <p className="text-muted-foreground font-semibold">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Section 5: The Pillars of Trust */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              THE <span className="text-gradient-gold">PILLARS OF TRUST</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Why $KOLI stands above the rest
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pillars.map((pillar, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="glass-card p-8 h-full group hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-gold flex items-center justify-center text-primary-foreground mb-6 group-hover:scale-110 transition-transform">
+                  {pillar.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 whitespace-nowrap">{pillar.title}</h3>
+                <p className="text-foreground/80 leading-relaxed">{pillar.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Global Call */}
       <section className="py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -262,54 +286,63 @@ const Index = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Ready to Join the <span className="text-gradient-gold">Kingdom</span>?
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              A KINGDOM WITHOUT <span className="text-gradient-gold">BORDERS</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-10">
-              Be part of something bigger. Join thousands of believers building 
-              a world where love and blockchain technology create lasting positive change.
+            <p className="text-xl md:text-2xl text-foreground/90 mb-12 leading-relaxed">
+              From the shores of the Philippines to the international stage, the Kingdom of Love is expanding. We are inviting the dreamers, the producers, and the 250,000+ believers to take their place in the royal lineage of <span className="text-gradient-gold font-semibold">$KOLI</span>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <HoverBorderGradient
-                containerClassName="rounded-full"
-                as="button"
-                className="flex items-center space-x-2 font-semibold"
-              >
-                <span>Get Started</span>
-              </HoverBorderGradient>
-              <Link
-                to="/about"
-                className="px-8 py-3 rounded-full border border-border text-foreground hover:bg-card transition-colors font-medium"
-              >
-                Learn More
-              </Link>
-            </div>
+            <HoverBorderGradient
+              containerClassName="rounded-full mx-auto w-fit"
+              as="button"
+              className="flex items-center space-x-2 font-bold text-xl px-10 py-4"
+            >
+              <span>PRESALE STARTS IN: 4 MONTHS</span>
+            </HoverBorderGradient>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-border">
+      <footer className="py-16 border-t border-border">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">K</span>
-              </div>
-              <span className="text-foreground font-semibold text-lg">KOLI</span>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-lg md:text-xl font-semibold text-gradient-gold mb-4">
+                Kingdom of Love International
+              </p>
+              <p className="text-foreground/80 text-lg">
+                Empowering the Less Fortunate, One Hold at a Time.
+              </p>
             </div>
-            <p className="text-muted-foreground text-sm">
-              © 2026 Kingdom of Love International. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-                About
+            
+            <div className="flex flex-wrap justify-center gap-8 mb-8">
+              <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+                Home
               </Link>
-              <Link to="/roadmap" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+              <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+                About Us
+              </Link>
+              <Link to="/roadmap" className="text-muted-foreground hover:text-foreground transition-colors">
                 Roadmap
               </Link>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                Litepaper
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                Community Telegram
+              </a>
+            </div>
+
+            <div className="text-center border-t border-border pt-8">
+              <p className="text-muted-foreground text-sm">
+                © 2026 Kingdom of Love International. All rights reserved.
+              </p>
+              <p className="text-muted-foreground text-xs mt-4">
+                Disclaimer: $KOLI is a utility token. Digital assets involve risk. Hold with purpose.
+              </p>
             </div>
           </div>
         </div>
