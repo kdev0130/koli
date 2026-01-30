@@ -275,7 +275,7 @@ const Roadmap = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-muted-foreground text-sm">
-              © Kingdom of Love International. All rights reserved.
+              © <a href="https://kol-intl.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Kingdom of Love International</a>. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">

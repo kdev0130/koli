@@ -389,7 +389,7 @@ const Index = () => {
 
             <div className="text-center border-t border-border pt-8">
               <p className="text-muted-foreground text-sm">
-                © 2026 Kingdom of Love International. All rights reserved.
+                © 2026 <a href="https://kol-intl.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Kingdom of Love International</a>. All rights reserved.
               </p>
             </div>
           </div>
