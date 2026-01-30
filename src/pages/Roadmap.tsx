@@ -1,6 +1,10 @@
 import { motion } from "motion/react";
+import { useEffect } from "react";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { Timeline } from "@/components/ui/timeline";
+import { StickyBanner } from "@/components/ui/sticky-banner";
+import { CompactCountdownTimer } from "@/components/ui/compact-countdown-timer";
+import { useStickyBanner } from "@/contexts/StickyBannerContext";
 import { Link } from "react-router-dom";
 import { Home, Users, Map, Rocket, Users2, Coins, Heart, Globe, CheckCircle2 } from "lucide-react";
 
@@ -174,25 +178,25 @@ const roadmapData = [
 ];
 
 const Roadmap = () => {
+  const { isBannerVisible } = useStickyBanner();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
+      <StickyBanner className="bg-gradient-to-r from-primary via-gold-light to-primary text-primary-foreground">
+        <div className="font-bold text-sm md:text-base drop-shadow-md flex items-center gap-2 whitespace-nowrap flex-nowrap">
+          <span>PRESALE STARTS IN:</span>
+          <CompactCountdownTimer />
+        </div>
+      </StickyBanner>
       <FloatingNav navItems={navItems} />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-12 overflow-hidden">
-        {/* Watermark Logo */}
-        <div className="absolute top-4 left-4 z-20 pointer-events-none">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="text-4xl md:text-5xl font-bold text-gradient-gold"
-          >
-            $KOLI
-          </motion.p>
-        </div>
 
-        <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
 
         <div className="container mx-auto px-4 relative z-10">

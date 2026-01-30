@@ -8,7 +8,8 @@ import {
 } from "motion/react";
 import { Download } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useStickyBanner } from "@/contexts/StickyBannerContext";
 
 export const FloatingNav = ({
   navItems,
@@ -23,6 +24,8 @@ export const FloatingNav = ({
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
+  const location = useLocation();
+  const { isBannerVisible } = useStickyBanner();
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -41,12 +44,7 @@ export const FloatingNav = ({
   });
 
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/litepaper.pdf";
-    link.download = "KOLI-Litepaper.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open("/litepaper.pdf", "_blank");
   };
 
   return (
@@ -63,24 +61,36 @@ export const FloatingNav = ({
         transition={{
           duration: 0.2,
         }}
+        style={{
+          transform: `translateY(${isBannerVisible ? '0' : '-3rem'})`,
+          transition: "transform 0.3s ease-in-out",
+        }}
         className={cn(
-          "flex max-w-fit fixed top-6 inset-x-0 mx-auto border border-border/50 rounded-full bg-card/80 backdrop-blur-xl shadow-lg z-[5000] px-8 py-3 items-center justify-center space-x-6",
+          "flex max-w-fit fixed top-[3.5rem] md:top-[4.5rem] inset-x-0 mx-auto border border-border/50 rounded-full bg-card/80 backdrop-blur-xl shadow-lg z-[5000] px-8 py-3 items-center justify-center space-x-6",
           className
         )}
       >
+        <img src="/koli_logo.png" alt="KOLI Logo" className="h-8 w-8 -mr-5" />
+        <Link to="/" className="text-2xl font-black text-gradient-gold tracking-tight mr-2">
+          $KOLI
+        </Link>
         
-        {navItems.map((navItem, idx) => (
-          <Link
-            key={`link-${idx}`}
-            to={navItem.link}
-            className={cn(
-              "relative text-muted-foreground items-center flex space-x-1 hover:text-foreground transition-colors"
-            )}
-          >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-sm font-medium">{navItem.name}</span>
-          </Link>
-        ))}
+        {navItems.map((navItem, idx) => {
+          const isActive = location.pathname === navItem.link;
+          return (
+            <Link
+              key={`link-${idx}`}
+              to={navItem.link}
+              className={cn(
+                "relative items-center flex space-x-1 transition-colors",
+                isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <span className="block sm:hidden">{navItem.icon}</span>
+              <span className="hidden sm:block text-sm font-medium">{navItem.name}</span>
+            </Link>
+          );
+        })}
         
         <button onClick={handleDownload} className="relative text-sm font-medium border border-primary/50 text-primary px-4 py-1.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300 group flex items-center gap-2">
           <Download className="h-4 w-4" />
