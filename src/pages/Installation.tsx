@@ -39,6 +39,8 @@ export default function Installation() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
   const [installError, setInstallError] = useState("");
+  const [showInstallModal, setShowInstallModal] = useState(false);
+  const [modalPlatform, setModalPlatform] = useState<"android" | "ios" | null>(null);
 
   useEffect(() => {
     // Check if app is already installed
@@ -70,11 +72,19 @@ export default function Installation() {
   };
 
   const handleInstall = async (platform: "android" | "ios") => {
-    setSelectedPlatform(platform);
+    setModalPlatform(platform);
+    setShowInstallModal(true);
+  };
+
+  const confirmInstall = async () => {
+    if (!modalPlatform) return;
+    
+    setSelectedPlatform(modalPlatform);
     setInstallError("");
+    setShowInstallModal(false);
 
     // For iOS, we need to show manual instructions as PWA install can't be triggered programmatically
-    if (platform === "ios" || /iPhone|iPad|iPod/.test(navigator.userAgent)) {
+    if (modalPlatform === "ios" || /iPhone|iPad|iPod/.test(navigator.userAgent)) {
       // Open the PWA URL and show instructions
       window.open(PWA_URL, "_blank");
       return;
@@ -445,6 +455,128 @@ export default function Installation() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Install Confirmation Modal */}
+      <AnimatePresence>
+        {showInstallModal && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+              onClick={() => setShowInstallModal(false)}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4"
+              onClick={() => setShowInstallModal(false)}
+            >
+              <div
+                className="glass-card p-8 max-w-md w-full relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <GlowingEffect spread={80} glow={true} proximity={120} />
+                
+                <div className="relative z-10 space-y-6">
+                  {/* App Icon */}
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
+                    className="mx-auto w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl gold-glow"
+                    style={{ background: "linear-gradient(135deg, hsl(43, 96%, 56%), hsl(38, 90%, 45%))" }}
+                  >
+                    {modalPlatform === "android" ? (
+                      <AndroidIcon className="w-12 h-12 text-background" />
+                    ) : (
+                      <AppleIcon className="w-12 h-12 text-background" />
+                    )}
+                  </motion.div>
+
+                  {/* Title */}
+                  <div className="text-center space-y-2">
+                    <motion.h2
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-2xl font-bold text-foreground"
+                    >
+                      Install KOLI App
+                    </motion.h2>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-muted-foreground"
+                    >
+                      Add the Kingdom of Love International app to your {modalPlatform === "android" ? "Android" : "iOS"} device for quick access
+                    </motion.p>
+                  </div>
+
+                  {/* Features */}
+                  <div className="space-y-3 py-4">
+                    {[
+                      { text: "Works like a native app", delay: 0.4 },
+                      { text: "Access from your home screen", delay: 0.5 },
+                      { text: "Works with limited connectivity", delay: 0.6 }
+                    ].map((feature, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: feature.delay }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center"
+                             style={{ background: "hsl(43, 96%, 56%, 0.1)" }}>
+                          <CheckCircle2 className="w-5 h-5" style={{ color: "hsl(43, 96%, 56%)" }} />
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          {feature.text}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Buttons */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="flex gap-3"
+                  >
+                    <Button
+                      onClick={() => setShowInstallModal(false)}
+                      variant="outline"
+                      className="flex-1 h-12 border-border hover:bg-muted"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      onClick={confirmInstall}
+                      className="flex-1 h-12 font-semibold shadow-lg hover:shadow-xl transition-shadow"
+                      style={{ 
+                        background: "linear-gradient(135deg, hsl(43, 96%, 56%), hsl(38, 90%, 45%))",
+                        color: "hsl(222, 47%, 6%)"
+                      }}
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Install Now
+                    </Button>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
