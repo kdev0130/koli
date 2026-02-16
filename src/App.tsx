@@ -7,6 +7,7 @@ import { StickyBannerProvider } from "@/contexts/StickyBannerContext";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Roadmap from "./pages/Roadmap";
+import Installation from "./pages/Installation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/install" element={<Installation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
