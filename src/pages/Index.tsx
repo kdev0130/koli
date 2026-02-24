@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Home, Users, Map, Heart, Zap, Lock } from "lucide-react";
 import heroBg from "@/assets/lamb.png";
 import { useStickyBanner } from "@/contexts/StickyBannerContext";
+import { getPresaleTargetTimestamp } from "@/lib/presale-countdown";
 
 const navItems = [
   { name: "Home", link: "/", icon: <Home className="h-4 w-4" /> },
@@ -75,8 +76,41 @@ const stats = [
   { label: "Locked Liquidity", value: "30%" },
 ];
 
+const getMonthsUntilPresale = (): number => {
+  const now = new Date();
+  const target = new Date(getPresaleTargetTimestamp());
+
+  if (target.getTime() <= now.getTime()) {
+    return 0;
+  }
+
+  let months =
+    (target.getUTCFullYear() - now.getUTCFullYear()) * 12 +
+    (target.getUTCMonth() - now.getUTCMonth());
+
+  const anchorDate = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth() + months,
+      now.getUTCDate(),
+      now.getUTCHours(),
+      now.getUTCMinutes(),
+      now.getUTCSeconds(),
+      now.getUTCMilliseconds()
+    )
+  );
+
+  if (anchorDate.getTime() > target.getTime()) {
+    months -= 1;
+  }
+
+  return Math.max(0, months);
+};
+
 const Index = () => {
   const { isBannerVisible } = useStickyBanner();
+  const monthsUntilPresale = getMonthsUntilPresale();
+  const monthsLabel = monthsUntilPresale === 1 ? "MONTH" : "MONTHS";
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -338,7 +372,7 @@ const Index = () => {
               as="button"
               className="flex items-center space-x-2 font-bold text-xl px-10 py-4"
             >
-              <span>PRESALE STARTS IN: 4 MONTHS</span>
+              <span>{`PRESALE STARTS IN: ${monthsUntilPresale} ${monthsLabel}`}</span>
             </HoverBorderGradient>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

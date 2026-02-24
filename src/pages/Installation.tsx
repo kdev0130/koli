@@ -374,28 +374,37 @@ export default function Installation() {
                         animate={{ opacity: 1, height: "auto" }}
                         className="bg-background/50 rounded-lg p-4 space-y-3 border border-border/50"
                       >
-                        <div className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(211, 100%, 50%)" }} />
-                          <p className="text-sm text-muted-foreground">
-                            Tap the <strong className="text-foreground">Share button</strong> <Share className="inline w-4 h-4" /> at the bottom of Safari
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-8 h-8 rounded-full flex items-center justify-center"
+                               style={{ background: "hsl(211, 100%, 50%, 0.2)" }}>
+                            <span className="text-lg font-bold" style={{ color: "hsl(211, 100%, 50%)" }}>!</span>
+                          </div>
+                          <p className="text-sm font-semibold text-foreground">
+                            Installation Instructions
                           </p>
                         </div>
                         <div className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(211, 100%, 50%)" }} />
                           <p className="text-sm text-muted-foreground">
-                            Scroll down and tap <strong className="text-foreground">"Add to Home Screen"</strong>
+                            Visit the app at <strong className="text-foreground">koli-2bad9.web.app</strong> in Safari
                           </p>
                         </div>
                         <div className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(211, 100%, 50%)" }} />
                           <p className="text-sm text-muted-foreground">
-                            Tap <strong className="text-foreground">"Add"</strong> in the top right corner
+                            Tap the <strong className="text-foreground">Share button</strong> <Share className="inline w-4 h-4" /> at the bottom
                           </p>
                         </div>
                         <div className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(211, 100%, 50%)" }} />
                           <p className="text-sm text-muted-foreground">
-                            The Koli app icon will appear on your home screen
+                            Scroll and tap <strong className="text-foreground">"Add to Home Screen"</strong>
+                          </p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(211, 100%, 50%)" }} />
+                          <p className="text-sm text-muted-foreground">
+                            Tap <strong className="text-foreground">"Add"</strong> to install KOLI to your home screen
                           </p>
                         </div>
                       </motion.div>
